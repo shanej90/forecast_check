@@ -1,0 +1,24 @@
+name: Run R Script Daily
+
+on:
+  schedule:
+    - cron: '0 19 * * *' # Schedule the job to run at 7PM every day
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Setup R environment
+      uses: r-lib/actions/setup-r@v1
+      with:
+        r-version: '4.2.2'
+
+    - name: Install R dependencies
+      run: Rscript -e 'install.packages(c("dplyr", "janitor", "purrr", "rvest", "stringr", "tidyr"))'
+
+    - name: Run R script
+      run: Rscript forecast_checker.R
