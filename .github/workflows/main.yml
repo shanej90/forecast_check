@@ -2,7 +2,7 @@ name: Run R Script Daily
 
 on:
   schedule:
-    - cron: '0 12 * * *' # Schedule the job to run at 1:00PM (UTC) every day
+    - cron: '30 12 * * *' # Schedule the job to run at 1:30PM (UTC) every day
 
 jobs:
   build:
@@ -27,6 +27,6 @@ jobs:
       run: |
         git config --global user.name "shanej90"
         git config --global user.email "shane.jackson@gmx.co.uk"
-        git add data/forecast_checker.csv
+        git add data/forecast_check.csv
         git commit -m "Update forecast_check.csv"
         git push
