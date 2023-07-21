@@ -2,11 +2,11 @@ name: Run R Script Daily
 
 on:
   schedule:
-    - cron: '30 8 * * *' # Schedule the job to run at 7:30PM every day
+    - cron: '30 9 * * *' # Schedule the job to run at 9:30AM (UTC) every day
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: macOS-latest
 
     steps:
     - name: Checkout repository
