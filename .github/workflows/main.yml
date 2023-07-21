@@ -2,7 +2,7 @@ name: Run R Script Daily
 
 on:
   schedule:
-    - cron: '30 10 * * *' # Schedule the job to run at 10:30AM (UTC) every day
+    - cron: '0 11 * * *' # Schedule the job to run at 11:00AM (UTC) every day
 
 jobs:
   build:
