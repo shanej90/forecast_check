@@ -153,5 +153,5 @@ bound <- bind_rows(
   )
 
 #export
-write.table(bound, "data/forecast_check.csv", append = T, row.names = F, sep = ",")
+write.table(bound, "data/forecast_check.csv", append = T, row.names = F, sep = ",", col.names = F)
   

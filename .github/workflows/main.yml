@@ -22,3 +22,10 @@ jobs:
 
     - name: Run R script
       run: Rscript forecast_checker.R
+      
+    - name: Commit and push changes
+      run: |
+        git config --global user.name "shanej90"
+        git config --global user.email "shane.jackson@gmx.co.uk"
+        git commit -m "Update forecast_check.csv"
+        git push
