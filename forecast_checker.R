@@ -89,7 +89,7 @@ obs_df <- observations[[1]] |> clean_names()
 #column headings (times) for second day in row where first col blank
 day2_head <- filter(obs_df, x == "")
 day2_head <- unlist(day2_head[1, ])
-day2_head <- day2_head[str_detect(day2_head, "0")]
+day2_head <- day2_head[str_detect(day2_head, "0") & !is.na(day2_head)]
 
 #extract temperatures
 temps <- obs_df |> filter(x == "Temperature in degrees Celsius")
@@ -109,6 +109,7 @@ day1_df <- temps |>
 #now day 2
 day2_df <- temps |>
   slice(2:2) |>
+  select_if(~ all(!is.na(.))) |>
   #need to correct the headers
   setNames(c("x", day2_head)) |>
   pivot_longer(cols = -x, names_to = "time", values_to = "observation") |>
@@ -120,7 +121,7 @@ day2_df <- temps |>
   ) |>
   filter(!is.na(temp))
 
-#bind
+c#bind
 observations_hourly <- bind_rows(day1_df, day2_df) |>
   mutate(precision = "hourly")
 
